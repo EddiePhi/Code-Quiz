@@ -1,92 +1,5 @@
 // https://www.w3schools.com/jsref/met_element_getelementsbytagname.asp
 
-
-// Start Quiz
-document.getElementById("startQuiz").addEventListener("click", firstQuestion);
-document.getElementById("startQuiz").addEventListener("click", setTime);
-  
-
-let totalScore = 0;
-
-
-// Timer
-let timeEl = document.querySelector(".time");
-let mainEl = document.getElementById("main");
-let secondsLeft = 10;
-
-
-
-
-function setTime() {
-  document.getElementById("intro").style.visibility = "hidden";
-  document.getElementById("startQuiz").style.visibility = "hidden";
-
-  // global variable to be access by gameOver()
-  timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + "s";
-  
-    if(secondsLeft === 0) {
-      gameOver();
-    }
-  }, 1000);
-}
-
-// Game Over
-function gameOver() {
-  clearInterval(timerInterval);
-  
-  timeEl.textContent = "GAME OVER";
-
-  divEl = document.createElement("div");
-  divEl.textContent = "Your Score: " + totalScore;
-  mainEl.appendChild(divEl);
-
-  fieldEl = document.createElement("input");
-  fieldEl.setAttribute("placeholder", "Enter Initials");
-  mainEl.appendChild(fieldEl);
-
-  butEl = document.createElement("button");
-  butEl.setAttribute("id", "submitButton");
-  butEl.textContent = "Submit";
-  mainEl.appendChild(butEl);
-
-  document.getElementById("submitButton").addEventListener("click", submitScore)
-
-  function submitScore(){
-    question5.remove();
-    answer1.remove();
-    answer2.remove();
-    answer3.remove();
-    answer4.remove();
-    answer5.remove();
-    button1.remove();
-    button2.remove();
-    button3.remove();
-    button4.remove();
-    button5.remove();
-
-    timeEl.textContent = "SCORE";
-    divEl.textContent = "Your Intials Here, " + totalScore;
-    fieldEl.remove();
-    butEl.textContent = "Start Over";
-    butEl.setAttribute("id", "startOver")
-    
-    document.getElementById("startOver").addEventListener("click", startOver)
-  
-    function startOver(){
-      location.reload();
-    }
-  } 
-}
-
-
-
-
-// Global Timer Interval variable
-
-
-
 // Variables for Questions, Answers, and Buttons
 let question1 = document.getElementById("q1");
 let question2 = document.getElementById("q1");
@@ -114,7 +27,92 @@ let select5 = document.querySelector(".button5").textContent = "Select";
 
 
 
+// Start Quiz
+document.getElementById("startQuiz").addEventListener("click", firstQuestion);
+document.getElementById("startQuiz").addEventListener("click", setTime);
+  
 
+let totalScore = 0;
+
+
+
+// Timer
+let timeEl = document.querySelector(".time");
+let mainEl = document.getElementById("main");
+let secondsLeft = 10;
+
+function setTime() {
+  document.getElementById("intro").style.visibility = "hidden";
+  document.getElementById("startQuiz").style.visibility = "hidden";
+
+  // Global timer variable to be access by gameOver()
+  timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + "s";
+  
+    if(secondsLeft === 0) {
+      gameOver();
+    }
+  }, 1000);
+}
+
+
+
+// Game Over Prompt
+function gameOver() {
+  clearInterval(timerInterval);
+  
+  timeEl.textContent = "GAME OVER";
+
+  divEl = document.createElement("div");
+  divEl.textContent = "Your Score: " + totalScore;
+  mainEl.appendChild(divEl);
+
+  fieldEl = document.createElement("input");
+  fieldEl.setAttribute("type", "text")
+  fieldEl.setAttribute("placeholder", "Enter Initials");
+  fieldEl.setAttribute("id", "fieldEl")
+  mainEl.appendChild(fieldEl);
+
+  butEl = document.createElement("input");
+  butEl.setAttribute("type", "submit");
+  butEl.setAttribute("id", "submitButton");
+  mainEl.appendChild(butEl);
+
+  document.getElementById("submitButton").addEventListener("click", submitScore)
+  
+  // Submit Score afterwards
+  function submitScore(){
+    question5.remove();
+    answer1.remove();
+    answer2.remove();
+    answer3.remove();
+    answer4.remove();
+    answer5.remove();
+    button1.remove();
+    button2.remove();
+    button3.remove();
+    button4.remove();
+    button5.remove();
+
+    timeEl.textContent = "SCORE";
+    divEl.textContent = String(document.getElementById("fieldEl").value) + ", Score: " + totalScore;
+    fieldEl.remove();
+    butEl.setAttribute("id", "startOver");
+    butEl.setAttribute("value", "Start Over");
+    
+    document.getElementById("startOver").addEventListener("click", startOver);
+    
+    //Reload page to start over
+    function startOver(){
+      location.reload();
+    }
+  } 
+}
+
+
+
+//Function Questions
 function firstQuestion() {
   
   question1.textContent = "Select 1";
@@ -141,6 +139,7 @@ function secondQuestion() {
   answer5.textContent = "E";
 }
 
+
 function thirdQuestion() {
   question3.textContent = "Select #";
   
@@ -151,6 +150,7 @@ function thirdQuestion() {
   answer5.textContent = "%";
 }
 
+
 function fourthQuestion() {
   question4.textContent = "Select (";
   
@@ -160,6 +160,7 @@ function fourthQuestion() {
   answer4.textContent = "(";
   answer5.textContent = ")";
 }
+
 
 function fifthQuestion() {
   question5.textContent = "Select the fifth one";
