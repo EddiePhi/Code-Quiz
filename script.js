@@ -28,9 +28,14 @@ let select5 = document.querySelector(".button5").textContent = "Select";
 
 
 // Start Quiz
+button1.style.visibility = "hidden"
+button2.style.visibility = "hidden"
+button3.style.visibility = "hidden"
+button4.style.visibility = "hidden"
+button5.style.visibility = "hidden"
 document.getElementById("startQuiz").addEventListener("click", firstQuestion);
 document.getElementById("startQuiz").addEventListener("click", setTime);
-  
+
 
 let totalScore = 0;
 
@@ -114,14 +119,18 @@ function gameOver() {
 
 //Function Questions
 function firstQuestion() {
+  button1.style.visibility = "visible"
+  button2.style.visibility = "visible"
+  button3.style.visibility = "visible"
+  button4.style.visibility = "visible"
+  button5.style.visibility = "visible"
+  question1.textContent = "What tag is a generic HTML container?";
   
-  question1.textContent = "Select 1";
-  
-  answer1.textContent = "1";
-  answer2.textContent = "2";
-  answer3.textContent = "3";
-  answer4.textContent = "4";
-  answer5.textContent = "5";
+  answer1.textContent = "<div>";
+  answer2.textContent = "Wrong Answer";
+  answer3.textContent = "Wrong Answer";
+  answer4.textContent = "Wrong Answer";
+  answer5.textContent = "Wrong Answer";
 
   if (!button1) {
       secondsLeft = secondsLeft - 5;
@@ -130,46 +139,46 @@ function firstQuestion() {
 
 
 function secondQuestion() {
-  question2.textContent = "Select B";
+  question2.textContent = "What is Bootstrap?";
   
-  answer1.textContent = "A";
-  answer2.textContent = "B";
-  answer3.textContent = "C";
-  answer4.textContent = "D";
-  answer5.textContent = "E";
+  answer1.textContent = "Wrong Answer";
+  answer2.textContent = "A responsive CSS framework";
+  answer3.textContent = "Wrong Answer";
+  answer4.textContent = "Wrong Answer";
+  answer5.textContent = "Wrong Answer";
 }
 
 
 function thirdQuestion() {
-  question3.textContent = "Select #";
+  question3.textContent = "What are the main 3 languages for web design?";
   
-  answer1.textContent = "!";
-  answer2.textContent = "@";
-  answer3.textContent = "#";
-  answer4.textContent = "$";
-  answer5.textContent = "%";
+  answer1.textContent = "Wrong Answer";
+  answer2.textContent = "Wrong Answer";
+  answer3.textContent = "HTML, CSS, JavaScript";
+  answer4.textContent = "Wrong Answer";
+  answer5.textContent = "Wrong Answer";
 }
 
 
 function fourthQuestion() {
-  question4.textContent = "Select (";
+  question4.textContent = "What is alternate variable declaration to 'var'?";
   
-  answer1.textContent = "^";
-  answer2.textContent = "&";
-  answer3.textContent = "*";
-  answer4.textContent = "(";
-  answer5.textContent = ")";
+  answer1.textContent = "Wrong Answer";
+  answer2.textContent = "Wrong Answer";
+  answer3.textContent = "Wrong Answer";
+  answer4.textContent = "let";
+  answer5.textContent = "Wrong Answer";
 }
 
 
 function fifthQuestion() {
-  question5.textContent = "Select the fifth one";
+  question5.textContent = "What is a popular coding algorithm interview question?";
   
-  answer1.textContent = "First";
-  answer2.textContent = "Second";
-  answer3.textContent = "Third";
-  answer4.textContent = "Fourth";
-  answer5.textContent = "Fifth";
+  answer1.textContent = "Wrong Answer";
+  answer2.textContent = "Wrong Answer";
+  answer3.textContent = "Wrong Answer";
+  answer4.textContent = "Wrong Answer";
+  answer5.textContent = "FizzBuzz";
 }
 
 
