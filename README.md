@@ -1,5 +1,20 @@
 # 04 Web APIs: Code Quiz
 
+---------------------------------------- Personal Notes ----------------------------------------
+
+DEPLOYED GITHUB PAGES LINK: https://eddiephi.github.io/Code-Quiz/
+
+DESCRIPTION: I developed a short multiple-choice Coding Quiz using HTML, CSS Bootstrap and JavaScript Event Handling.
+
+SCREENSHOT:
+
+![Code Quiz](./Assets/code-quiz-screenshot.png)
+
+I used https://validator.w3.org/nu/ to validate my site.
+
+Below are the guidelines I followed for this project:
+
+
 ## Your Task
 
 As you proceed in your journey to becoming a full-stack web developer, it’s likely that you’ll be asked to complete a coding assessment, perhaps as part of an interview process. A typical coding assessment is a combination of multiple-choice questions and interactive coding challenges. 
