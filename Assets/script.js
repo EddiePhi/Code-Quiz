@@ -41,11 +41,11 @@ function checkResults(){
   if(this.textContent == quiz.answers[index]){
     alert("you are right");
     totalScore++;
-  };
-  else{
+  } else {
     alert("you are wrong");
     loseTime();
   };
+
   index++;
   
   if (index >= quiz.questions.length){
@@ -163,20 +163,3 @@ function gameOver() {
     };
   };
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
