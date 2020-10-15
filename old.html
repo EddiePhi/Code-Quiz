@@ -1,4 +1,4 @@
-<!-- VVVVVVVV Assistance from Tutor: Vivian Tuong Nguyen VVVVVVVV --> 
+<!-- Start Page -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,19 +11,23 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div id="time"></div>
+    <h1 class="time"></h1>
     <div id="main"></div>
-    <div id="intro"></div>
-    <input id="startQuizBtn" type="submit" value="Start Quiz"></input>
-    <div id="question"></div>
-    <div id="choices"></div>
-    <div id="answer"></div>
-    
-
-
-
-
-
+    <div id="intro">
+        <p>Welcome! Good luck!</p>
+        <button id="startQuiz">Start Quiz</button>
+    </div>
+    <div id="q1"></div>
+    <div id="a1"></div> 
+    <button class="button1" onclick="secondQuestion()"></button>
+    <div id="a2"></div>   
+    <button class="button2" onclick="thirdQuestion()"></button>
+    <div id="a3"></div>  
+    <button class="button3" onclick="fourthQuestion()"></button> 
+    <div id="a4"></div>
+    <button class="button4" onclick="fifthQuestion()"></button>    
+    <div id="a5"></div>
+    <button class="button5" onclick="gameOver()"></button>        
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
