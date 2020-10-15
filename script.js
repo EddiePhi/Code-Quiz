@@ -4,7 +4,7 @@
 let introPrompt = document.querySelector("#intro")
 let startQuizBtn = document.querySelector("#startQuizBtn");
 
-introPrompt.textContent = "Welcome to the Code Quiz! Press the 'Start Quiz' to begin.";
+introPrompt.textContent = "Welcome to the Code Quiz! Press 'Start Quiz' to begin.";
 startQuizBtn.addEventListener("click", displayCard);
 startQuizBtn.addEventListener("click", hideIntro);
 startQuizBtn.addEventListener("click", startTime);
@@ -114,22 +114,35 @@ function loseTime(){
 function gameOver() {
   clearInterval(timerInterval);
   
+  //document.querySelector("#spacing").remove();
   timeEl.textContent = "GAME OVER";
+  timeEl.setAttribute("class", "col-md-12 d-flex justify-content-center")
+  secEl = document.createElement("section");
+  secEl.textContent = "Your Score: " + totalScore;
+  secEl.setAttribute("class", "col-md-12 d-flex justify-content-center")
+  mainEl.appendChild(secEl);
 
-  divEl = document.createElement("div");
-  divEl.textContent = "Your Score: " + totalScore;
-  mainEl.appendChild(divEl);
+  rowEl = document.createElement("section");
+  rowEl.setAttribute("class", "row justify-content-center");
+  mainEl.appendChild(rowEl);
+
+  spaceEl = document.createElement("section");
+  spaceEl.setAttribute("class", "d-flex justify-content-center");
+  rowEl.appendChild(spaceEl);
 
   fieldEl = document.createElement("input");
   fieldEl.setAttribute("type", "text")
   fieldEl.setAttribute("placeholder", "Enter Initials");
   fieldEl.setAttribute("id", "fieldEl")
-  mainEl.appendChild(fieldEl);
+  fieldEl.setAttribute("class", "d-flex justify-content-center")
+  rowEl.appendChild(fieldEl);
+
 
   butEl = document.createElement("input");
   butEl.setAttribute("type", "submit");
   butEl.setAttribute("id", "submitButton");
-  mainEl.appendChild(butEl);
+  butEl.setAttribute("class", "d-flex justify-content-center")
+  rowEl.appendChild(butEl);
 
   document.getElementById("submitButton").addEventListener("click", submitScore)
   
@@ -138,7 +151,7 @@ function gameOver() {
     
 
     timeEl.textContent = "SCORE";
-    divEl.textContent = String(document.getElementById("fieldEl").value) + ": " + totalScore;
+    secEl.textContent = String(document.getElementById("fieldEl").value) + ": " + totalScore;
     fieldEl.remove();
     butEl.setAttribute("id", "startOver");
     butEl.setAttribute("value", "Start Over");
