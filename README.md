@@ -8,7 +8,7 @@ DESCRIPTION: I developed a short multiple-choice Coding Quiz using HTML, CSS Boo
 
 SCREENSHOT:
 
-![Code Quiz](./Assets/code-quiz-screenshot.png)
+![Code Quiz](Assets/code-quiz-screenshot.png)
 
 I used https://validator.w3.org/nu/ to validate my site.
 
