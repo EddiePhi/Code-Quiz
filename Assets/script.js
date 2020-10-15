@@ -1,7 +1,7 @@
 // VVVVVVVV Assistance from Tutor: Vivian Tuong Nguyen VVVVVVVV
 
 //Beginning Prompt
-let introPrompt = document.querySelector("#intro")
+let introPrompt = document.querySelector("#intro");
 let startQuizBtn = document.querySelector("#startQuizBtn");
 
 introPrompt.textContent = "Welcome to the Code Quiz! Press 'Start Quiz' to begin.";
@@ -12,7 +12,7 @@ startQuizBtn.addEventListener("click", startTime);
 function hideIntro(){
   introPrompt.remove();
   startQuizBtn.remove();
-}
+};
 
 // Quiz
 var totalScore = 0;
@@ -33,7 +33,7 @@ var quiz = {
     ['Twilio', 'FizzBuzz', 'Glia']
   ],
   answers:['<div>', 'A responsive CSS framework', 'HTML, CSS, & JavaScript', 'let', 'FizzBuzz']
-}
+};
 
 function checkResults(){
   // Validate correct answer
@@ -41,21 +41,20 @@ function checkResults(){
   if(this.textContent == quiz.answers[index]){
     alert("you are right");
     totalScore++;
-  }
+  };
   else{
     alert("you are wrong");
     loseTime();
-  }
+  };
   index++;
   
   if (index >= quiz.questions.length){
     gameOver();
-  }
-
+  };
   
   displayCard();
   
-  }
+  };
 
 function displayCard(){
   document.querySelector("#question").textContent= "";
@@ -72,12 +71,12 @@ function displayCard(){
     btn.textContent = quiz.choices[index][i];
     btn.onclick = checkResults;
     document.querySelector("#choices").append(btn);
-  }
+  };
   
   //#answer
   //document.querySelector("#answer").textContent = quiz.answers[index];
 
-}
+};
 
 // Timer
 let timeEl = document.querySelector("#time");
@@ -89,17 +88,17 @@ function startTime(){
 
   // Global timer variable to be access by gameOver()
   timerInterval = setInterval(countdown, 1000);
-}
+};
 
 function countdown(){
   secondsLeft--;
   timeEl.textContent = secondsLeft + "s";
 
-  if(secondsLeft === 0) {
-    stopTime();
-  }
+  if(secondsLeft <= 0) {
+    gameOver();
+  };
 
-}
+};
 
 function loseTime(){
   secondsLeft -= 10;
@@ -107,8 +106,8 @@ function loseTime(){
   
     if(secondsLeft <= 0) {
       gameOver();
-    }
-}
+    };
+};
 
 // Game Over Prompt
 function gameOver() {
@@ -116,10 +115,10 @@ function gameOver() {
   
   //document.querySelector("#spacing").remove();
   timeEl.textContent = "GAME OVER";
-  timeEl.setAttribute("class", "col-md-12 d-flex justify-content-center")
+  timeEl.setAttribute("class", "col-md-12 d-flex justify-content-center");
   secEl = document.createElement("section");
   secEl.textContent = "Your Score: " + totalScore;
-  secEl.setAttribute("class", "col-md-12 d-flex justify-content-center")
+  secEl.setAttribute("class", "col-md-12 d-flex justify-content-center");
   mainEl.appendChild(secEl);
 
   rowEl = document.createElement("section");
@@ -131,20 +130,20 @@ function gameOver() {
   rowEl.appendChild(spaceEl);
 
   fieldEl = document.createElement("input");
-  fieldEl.setAttribute("type", "text")
+  fieldEl.setAttribute("type", "text");
   fieldEl.setAttribute("placeholder", "Enter Initials");
-  fieldEl.setAttribute("id", "fieldEl")
-  fieldEl.setAttribute("class", "d-flex justify-content-center")
+  fieldEl.setAttribute("id", "fieldEl");
+  fieldEl.setAttribute("class", "d-flex justify-content-center");
   rowEl.appendChild(fieldEl);
 
 
   butEl = document.createElement("input");
   butEl.setAttribute("type", "submit");
   butEl.setAttribute("id", "submitButton");
-  butEl.setAttribute("class", "d-flex justify-content-center")
+  butEl.setAttribute("class", "d-flex justify-content-center");
   rowEl.appendChild(butEl);
 
-  document.getElementById("submitButton").addEventListener("click", submitScore)
+  document.getElementById("submitButton").addEventListener("click", submitScore);
   
   // Submit Score afterwards
   function submitScore(){
@@ -161,9 +160,9 @@ function gameOver() {
     //Reload page to start over
     function startOver(){
       location.reload();
-    }
-  } 
-}
+    };
+  };
+};
 
 
 
