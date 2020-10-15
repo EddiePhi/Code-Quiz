@@ -26,11 +26,11 @@ var quiz = {
     "What is a popular coding algorithm interview question?"
   ],
   choices:[
-    ['a', '<div>', 'c'],
-    ['A responsive CSS framework', 'b', 'c'],
-    ['a', 'b', 'HTML, CSS, & JavaScript'],
-    ['let', 'b', 'c'],
-    ['a', 'FizzBuzz', 'c']
+    ['<p>', '<div>', '<h1>'],
+    ['A responsive CSS framework', 'Another name for laces', "William Turner\'s dad"],
+    ['French, Swahili, Korean', 'Python, C++, Java', 'HTML, CSS, & JavaScript'],
+    ['let', 'declare', 'create'],
+    ['Twilio', 'FizzBuzz', 'Glia']
   ],
   answers:['<div>', 'A responsive CSS framework', 'HTML, CSS, & JavaScript', 'let', 'FizzBuzz']
 }
@@ -75,7 +75,7 @@ function displayCard(){
   }
   
   //#answer
-  document.querySelector("#answer").textContent = quiz.answers[index];
+  //document.querySelector("#answer").textContent = quiz.answers[index];
 
 }
 
