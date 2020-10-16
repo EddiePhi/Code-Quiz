@@ -175,15 +175,39 @@ function gameOver() {
     //document.querySelectorAll("alert").remove();
     
     timeEl.textContent = "HIGH SCORE";
-    //Local Storage Set
-    secEl.textContent = localStorage.setItem('newScore', String(document.getElementById("fieldEl").value) + ": " + totalScore);
-    //Local Storage Get
-    console.log(localStorage.getItem('newScore'));
-
     secEl.textContent = String(document.getElementById("fieldEl").value) + ": " + totalScore;
     fieldEl.remove();
     butEl.setAttribute("id", "startOver");
     butEl.setAttribute("value", "Start Over");
+    
+
+
+
+
+
+    //Local Storage Set
+    let scoresArr = [];
+    
+    const newScore = {
+      initials: secEl.textContent,
+      score: totalScore
+    };
+
+    scoresArr.push(newScore);
+
+    localStorage.setItem("savedScores", JSON.stringify(scoresArr));
+
+    let getStorage = localStorage.getItem("saveScores");
+    scoresArr = JSON.parse(getStorage)
+    
+    //document.getElementById("fieldEl").value + ": " + totalScore;
+    
+    
+    //secEl.textContent = storageSet
+    //Local Storage Get
+    console.log(localStorage.getItem("savedScores"));
+
+    
     
     document.getElementById("startOver").addEventListener("click", startOver);
     
@@ -193,6 +217,25 @@ function gameOver() {
     };
   };
 };
+
+// HOW TO SAVE HIGH SCORES
+//    let scoresArr = [ { name: "Paul", score: 5 }, { name: "Eddie", score: 9001 } ];
+// Adds a key called "highScores" in local storage and saves the scoresArr as a string as the value
+//    localStorage.setItem("highScores", JSON.stringify(scoresArr));
+
+// HOW TO ADD TO HIGH SCORES
+// You user gets a new score
+//    const newScore = { name: "Frank", score: 0 };
+//  Extract the "highScores" object from localstorage (this comes out as a string)
+//    let savedScores = localstorage.getItem("highScores");
+// Convert the string into an array of objects again
+//    scoresArr = JSON.parse(savedScores);
+// Push the new score to the scores array
+//    scoresArr.push(newScore);
+// To put back in localstorage see "HOW TO SAVE HIGH SCORES"
+
+
+
 
 // - Add to local storage
 //     - local.Storage.setItem(‘key’, value)
