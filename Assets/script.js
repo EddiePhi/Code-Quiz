@@ -118,6 +118,9 @@ function gameOver() {
   timeEl.setAttribute("class", "col-md-12 d-flex justify-content-center");
   secEl = document.createElement("section");
   secEl.textContent = "Your Score: " + totalScore;
+  
+
+  
   secEl.setAttribute("class", "col-md-12 d-flex justify-content-center");
   mainEl.appendChild(secEl);
 
@@ -143,13 +146,23 @@ function gameOver() {
   butEl.setAttribute("class", "d-flex justify-content-center");
   rowEl.appendChild(butEl);
 
+  
+
   document.getElementById("submitButton").addEventListener("click", submitScore);
   
+  
+    
   // Submit Score afterwards
   function submitScore(){
     
 
-    timeEl.textContent = "SCORE";
+    timeEl.textContent = "HIGH SCORE";
+
+    //Local Storage Set
+    secEl.textContent = localStorage.setItem('newScore', String(document.getElementById("fieldEl").value) + ": " + totalScore);
+    //Local Storage Get
+    console.log(localStorage.getItem('newScore'));
+
     secEl.textContent = String(document.getElementById("fieldEl").value) + ": " + totalScore;
     fieldEl.remove();
     butEl.setAttribute("id", "startOver");
@@ -163,3 +176,10 @@ function gameOver() {
     };
   };
 };
+
+// - Add to local storage
+//     - local.Storage.setItem(‘key’, value)
+// - Retrieve from local storage
+//     - local.Storage.getItem(‘key’)
+// - Before you save to local storage, you have to convert it to a string first: JSON.stringify(key)
+// - To “unstringify” use JSON.parse()
