@@ -36,15 +36,34 @@ var quiz = {
 };
 
 function checkResults(){
-  // Validate correct answer
+  // Validate correct answer using alerts from https://getbootstrap.com/docs/4.0/components/alerts/
   console.log(this.textContent);
+  
   if(this.textContent == quiz.answers[index]){
-    alert("you are right");
+    let success = document.createElement('div');
+    success.textContent = "Correct!";
+    success.setAttribute('class', 'alert alert-success');
+    success.setAttribute('role', 'alert');
+    document.body.appendChild(success);
     totalScore++;
   } else {
-    alert("you are wrong");
+    let failure = document.createElement('div');
+    failure.textContent = "Correct!";
+    failure.setAttribute('class', 'alert alert-danger');
+    failure.setAttribute('role', 'alert');
+    document.body.appendChild(failure);
     loseTime();
   };
+// <div class="alert alert-success" role="alert">
+//     Correct!
+// </div>
+// <div class="alert alert-danger" role="alert">
+//     Incorrect!
+// </div> 
+
+
+
+
 
   index++;
   
@@ -73,15 +92,13 @@ function displayCard(){
     document.querySelector("#choices").append(btn);
   };
   
-  //#answer
-  //document.querySelector("#answer").textContent = quiz.answers[index];
 
 };
 
 // Timer
 let timeEl = document.querySelector("#time");
 let mainEl = document.querySelector("#main");
-let secondsLeft = 100;
+let secondsLeft = 61;
 let timerInterval;
 
 function startTime(){
@@ -147,17 +164,17 @@ function gameOver() {
   rowEl.appendChild(butEl);
 
   
-
+  
   document.getElementById("submitButton").addEventListener("click", submitScore);
   
   
     
   // Submit Score afterwards
   function submitScore(){
+    //querySelectorAll() not working.
+    //document.querySelectorAll("alert").remove();
     
-
     timeEl.textContent = "HIGH SCORE";
-
     //Local Storage Set
     secEl.textContent = localStorage.setItem('newScore', String(document.getElementById("fieldEl").value) + ": " + totalScore);
     //Local Storage Get
