@@ -67,13 +67,13 @@ function checkResults(){
 
   index++;
   
-  if (index >= quiz.questions.length){
+  if (index >= quiz.questions.length - 1){
     gameOver();
   };
   
   displayCard();
   
-  };
+};
 
 function displayCard(){
   document.querySelector("#question").textContent= "";
@@ -169,7 +169,7 @@ function gameOver() {
   
   //Local Storage Assistance from class TA - Paul Laird
   
-  function setStorage(){
+  function setStorage(arr){
     localStorage.setItem("savedScores", JSON.stringify(arr));
   };
 
@@ -193,7 +193,7 @@ function gameOver() {
       score: totalScore
     };
 
-    let getStorage = localStorage.getItem("savedScores");
+    let getStorage = localStorage.getItem("savedScores") || "[]";
     scoresArr = JSON.parse(getStorage);
     console.log(scoresArr);
 
