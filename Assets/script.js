@@ -168,7 +168,8 @@ function gameOver() {
   document.getElementById("submitButton").addEventListener("click", submitScore);
   
   
-    
+  let scoresArr = []; 
+  let setStorage = localStorage.setItem("savedScores", JSON.stringify(scoresArr));
   // Submit Score afterwards
   function submitScore(){
     //querySelectorAll() not working.
@@ -186,26 +187,35 @@ function gameOver() {
 
 
     //Local Storage Set
-    let scoresArr = [];
     
+
     const newScore = {
       initials: secEl.textContent,
       score: totalScore
     };
 
+    let getStorage = localStorage.getItem("savedScores");
+    scoresArr = JSON.parse(getStorage);
+    console.log(scoresArr);
+
     scoresArr.push(newScore);
+    setStorage;
+    
 
-    localStorage.setItem("savedScores", JSON.stringify(scoresArr));
+    
 
-    let getStorage = localStorage.getItem("saveScores");
-    scoresArr = JSON.parse(getStorage)
+    
+    
+    
+    // scoresArr.push("test");
+    // console.log(scoresArr);
     
     //document.getElementById("fieldEl").value + ": " + totalScore;
     
     
     //secEl.textContent = storageSet
     //Local Storage Get
-    console.log(localStorage.getItem("savedScores"));
+    //console.log(localStorage.getItem("savedScores"));
 
     
     
@@ -214,6 +224,7 @@ function gameOver() {
     //Reload page to start over
     function startOver(){
       location.reload();
+      console.log(scoresArr);
     };
   };
 };
