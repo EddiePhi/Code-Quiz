@@ -48,26 +48,16 @@ function checkResults(){
     totalScore++;
   } else {
     let failure = document.createElement('div');
-    failure.textContent = "Correct!";
+    failure.textContent = "Incorrect!";
     failure.setAttribute('class', 'alert alert-danger');
     failure.setAttribute('role', 'alert');
     document.body.appendChild(failure);
     loseTime();
   };
-// <div class="alert alert-success" role="alert">
-//     Correct!
-// </div>
-// <div class="alert alert-danger" role="alert">
-//     Incorrect!
-// </div> 
-
-
-
-
 
   index++;
   
-  if (index >= quiz.questions.length - 1){
+  if (index > quiz.questions.length - 1){
     gameOver();
   };
   
@@ -84,7 +74,7 @@ function displayCard(){
   document.querySelector("#question").textContent = quiz.questions[index];
   
   //Buttons for #choices
-  for(var i = 0; i < quiz.choices[index].length; i++){
+  for(var i = 0; i <= quiz.choices[index].length - 1; i++){
     var btn = document.createElement("button");
     btn.setAttribute("class", "btn-choice");
     btn.textContent = quiz.choices[index][i];
@@ -130,13 +120,10 @@ function loseTime(){
 function gameOver() {
   clearInterval(timerInterval);
   
-  //document.querySelector("#spacing").remove();
   timeEl.textContent = "GAME OVER";
   timeEl.setAttribute("class", "col-md-12 d-flex justify-content-center");
   secEl = document.createElement("section");
   secEl.textContent = "Your Score: " + totalScore;
-  
-
   
   secEl.setAttribute("class", "col-md-12 d-flex justify-content-center");
   mainEl.appendChild(secEl);
@@ -156,15 +143,12 @@ function gameOver() {
   fieldEl.setAttribute("class", "d-flex justify-content-center");
   rowEl.appendChild(fieldEl);
 
-
   butEl = document.createElement("input");
   butEl.setAttribute("type", "submit");
   butEl.setAttribute("id", "submitButton");
   butEl.setAttribute("class", "d-flex justify-content-center");
   rowEl.appendChild(butEl);
 
-  
-  
   document.getElementById("submitButton").addEventListener("click", submitScore);
   
   //Local Storage Assistance from class TA - Paul Laird
@@ -175,22 +159,11 @@ function gameOver() {
 
   // Submit Score afterwards
   function submitScore(){
-    //querySelectorAll() not working.
-    //document.querySelectorAll("alert").remove();
     let scoresArr = []; 
-
-    timeEl.textContent = "HIGH SCORE";
-    secEl.textContent = String(document.getElementById("fieldEl").value) + ": " + totalScore;
-    fieldEl.remove();
-    butEl.setAttribute("id", "startOver");
-    butEl.setAttribute("value", "Start Over");
-    
-    //Local Storage Set
-    
+    let currentScore = document.getElementById("fieldEl").value + ": " + totalScore;
 
     const newScore = {
-      initials: secEl.textContent,
-      score: totalScore
+      score: currentScore
     };
 
     let getStorage = localStorage.getItem("savedScores") || "[]";
@@ -198,25 +171,42 @@ function gameOver() {
     console.log(scoresArr);
 
     scoresArr.push(newScore);
-    setStorage(scoresArr);
+  
+    timeEl.textContent = "SCORES";
+    secEl.textContent = currentScore;
     
-    // scoresArr.push("test");
-    // console.log(scoresArr);
-    
-    //document.getElementById("fieldEl").value + ": " + totalScore;
-    
-    
-    //secEl.textContent = storageSet
-    //Local Storage Get
-    //console.log(localStorage.getItem("savedScores"));
+    //Unable to elegantly display scores.
+    for (let i = 0; i < scoresArr.length; i++){
+      mainEl.append(JSON.stringify(scoresArr[i].score.split('"')));
+    };
 
+    setStorage(scoresArr);
+
+    // Reconfigure submit score page
+    fieldEl.remove();
+    butEl.setAttribute("id", "startOver");
+    butEl.setAttribute("value", "Start Over");
+    
+    //resetScoreBtn will clear local storage, but score still remains on page. After clicking resetScoreBtn, next finished game will only display one score.
+    resetScoreBtn = document.createElement("input");
+    resetScoreBtn.setAttribute("id", "resetScore");
+    resetScoreBtn.setAttribute("type", "submit");
+    resetScoreBtn.setAttribute("value", "Reset Score On Next Game")
+    resetScoreBtn.setAttribute("class", "d-flex justify-content-center");
+    mainEl.appendChild(resetScoreBtn);
+    
     document.getElementById("startOver").addEventListener("click", startOver);
+    document.getElementById("resetScore").addEventListener("click", resetScore);
     
     //Reload page to start over
     function startOver(){
       location.reload();
       console.log(scoresArr);
     };
+
+    function resetScore(){
+      localStorage.clear();
+    }
   };
 };
 
