@@ -167,25 +167,24 @@ function gameOver() {
   
   document.getElementById("submitButton").addEventListener("click", submitScore);
   
+  //Local Storage Assistance from class TA - Paul Laird
   
-  let scoresArr = []; 
-  let setStorage = localStorage.setItem("savedScores", JSON.stringify(scoresArr));
+  function setStorage(){
+    localStorage.setItem("savedScores", JSON.stringify(arr));
+  };
+
   // Submit Score afterwards
   function submitScore(){
     //querySelectorAll() not working.
     //document.querySelectorAll("alert").remove();
-    
+    let scoresArr = []; 
+
     timeEl.textContent = "HIGH SCORE";
     secEl.textContent = String(document.getElementById("fieldEl").value) + ": " + totalScore;
     fieldEl.remove();
     butEl.setAttribute("id", "startOver");
     butEl.setAttribute("value", "Start Over");
     
-
-
-
-
-
     //Local Storage Set
     
 
@@ -199,13 +198,7 @@ function gameOver() {
     console.log(scoresArr);
 
     scoresArr.push(newScore);
-    setStorage;
-    
-
-    
-
-    
-    
+    setStorage(scoresArr);
     
     // scoresArr.push("test");
     // console.log(scoresArr);
@@ -217,8 +210,6 @@ function gameOver() {
     //Local Storage Get
     //console.log(localStorage.getItem("savedScores"));
 
-    
-    
     document.getElementById("startOver").addEventListener("click", startOver);
     
     //Reload page to start over
