@@ -1,18 +1,30 @@
 # Code Quiz
 
----------------------------------------- Personal Notes ----------------------------------------
+-------------------------------------------------- Personal Notes -------------------------------------------------
 
-DEPLOYED GITHUB PAGES LINK: https://eddiephi.github.io/Code-Quiz/
+Deployed GitHub Pages Link: https://eddiephi.github.io/Code-Quiz/
 
-DESCRIPTION: I developed a short multiple-choice Coding Quiz using HTML, CSS Bootstrap and JavaScript Event Handling.
+Description: I developed a short multiple-choice Coding Quiz using HTML, CSS Bootstrap and JavaScript Event Handling.
 
-SCREENSHOT:
+Screenshot:
 
 ![Code Quiz](./Assets/code-quiz-screenshot.png)
 
-I used https://validator.w3.org/nu/ to validate my site.
+Technologies: HTML5, CSS3, Bootstrap, JavaScript
 
-Below are the guidelines I followed for this project:
+License: MIT
+
+I used https://validator.w3.org/nu/ to validate my work.
+
+---------------------------------------------------- Contact ----------------------------------------------------
+
+Email: ephimansone@gmail.com 
+
+LinkedIn: https://linkedin.com/in/eddiephi
+
+GitHub: https://github.com/EddiePhi
+
+Portfolio: https://eddiephi.github.io/EddiePhiPortfolio/
 
 
 
