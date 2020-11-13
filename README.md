@@ -8,7 +8,7 @@ Description: I developed a short multiple-choice Coding Quiz using HTML, CSS Boo
 
 Screenshot:
 
-![Code Quiz](./Assets/code-quiz-screenshot.png)
+![Code Quiz](./Assets/code-quiz.png)
 
 Technologies: HTML5, CSS3, Bootstrap, JavaScript
 
